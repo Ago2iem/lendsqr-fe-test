@@ -1,3 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,700;1,500&display=swap');
+
+@font-face {
+    font-family: 'Avenir next';
+    src: local('AvenirNext'), url("../assets/fonts/AvenirNextLTPro-Regular.otf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Avenir next bold';
+    src: local('AvenirNext'), url("../assets/fonts/AvenirNextLTPro-Bold.otf") format('truetype');
+}
+
+
+$status-colors: (
+    active: (text: #39cd62,
+        background: rgba(57, 205, 98, 0.2)),
+    inactive: (text: #545F7D,
+        background: rgba(84, 95, 125, 0.2)),
+    pending: (text: #E9B200,
+        background: rgba(233, 178, 0, 0.2)),
+    blacklisted: (text: #E4033B,
+        background: rgba(228, 3, 59, 0.2))
+);
+
+
+// Fonts
+$workSans: 'Work Sans', sans-serif;
+$avenirNext: 'Avenir next', sans-serif;
+$avenirNextBold: 'Avenir next bold', sans-serif;
+
+// Breakpoints
+@mixin breakpointMobile {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin breakpointTablet {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin breakpointTabletLg {
+    @media (max-width: 900px) {
+        @content;
+    }
+}
+
+@mixin breakpointDesktop {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+// Primary button
+@mixin buttonStyle {
+    background-color: $primary-color;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-family: $avenirNext;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+@mixin input {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #545f7d26;
+    border-radius: 5px;
+    font-family: $avenirNext;
+    font-size: 14px;
+    color: $textPrimary;
+    outline: none;
+}
+
+
 // Colors
 $primary-color: #39CDCC;
 $primary-color-fade: #39CDCC33;
@@ -10,6 +91,7 @@ $tetiary-color-sfade: #213F7D33;
 $tetiary-color-fade: #213f7d05;
 $tetiary-color-fade-s: #213f7d0D;
 $text-color: #000;
+$text-color-fade: #000000CC;
 $bg-color: #ffffff;
 $bg-color-secondary: #FBFBFB;
 
@@ -32,5 +114,5 @@ $spacing-ll: 50px;
 $spacing-tl: 100px;
 
 // Breakpoints
-$breakpoint-mobile: 768px;
+$breakpoint-mobile: 670px;
 $breakpoint-tablet: 992px;

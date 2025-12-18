@@ -4,11 +4,10 @@
 .dashboard {
     flex: 1;
     height: 100%;
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     gap: $spacing-xl;
-    overflow-y: auto;
+    // overflow-y: auto;
 
     &::-webkit-scrollbar {
         display: none;

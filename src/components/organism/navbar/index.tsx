@@ -5,9 +5,16 @@ import Search from '../../../assets/icons/search-icon.svg'
 import Ring from '../../../assets/icons/ring.svg'
 import Image from '../../../assets/images/profile-image.png'
 import Arrow from '../../../assets/icons/arrow-down.svg'
+import Open from '../../../assets/icons/left-panel-open.svg'
+import Close from '../../../assets/icons/right-panel-open.svg'
+
+interface NavbarProps {
+    setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    menuOpen: boolean;
+}
 
 
-const Navbar = () => {
+const Navbar = ({ setMenuOpen, menuOpen }: NavbarProps) => {
     return (
         <div className="navbar">
             <div className='inner-nav'>
@@ -37,6 +44,9 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='menu' onClick={() => setMenuOpen(!menuOpen)}>
+                    <img src={menuOpen ? Open : Close} alt="" />
                 </div>
             </div>
         </div>

@@ -1,12 +1,16 @@
 import { Outlet, useNavigate } from "react-router-dom"
-import './user-layout.scss'
-import Arrow from '../../assets/icons/arrow-back.svg'
-import Star from '../../assets/icons/filled-star.svg'
-import Person from '../../assets/icons/person.svg'
-import { Button } from "../../components/atoms/button/Button"
+import '../styles/user.scss'
+import Arrow from '../assets/icons/arrow-back.svg'
+import Star from '../assets/icons/filled-star.svg'
+import Person from '../assets/icons/person.svg'
+import { Button } from "../components/atoms/button/Button"
+import UserDetailsBody from "../components/molecules/user-details-body"
+import { staticUser } from "../common/users"
 
 const UserLayout = () => {
     const navigate = useNavigate()
+
+
     return (
         <div className="user-layout">
             <div onClick={() => navigate('/dashboard')} className="back">
@@ -27,18 +31,17 @@ const UserLayout = () => {
             </div>
 
             <div className="nav">
-
                 <div className="inner-div">
                     <div className="user-right">
                         <img src={Person} alt="" />
                     </div>
                     <div className="user-left">
-                        <div className="group group--border group--first">
+                        <div className="group group--first">
                             <span className="name">Grace Effiom</span>
                             <span className="name name--id">LSQFf587g90</span>
                         </div>
                         <div className="group group--border">
-                            <span className="name name--user">User's Teir</span>
+                            <span className="name name--user">User's Tier</span>
                             <div className="stars">
                                 <img src={Star} alt="" />
                                 <img src={Star} alt="" />
@@ -53,28 +56,29 @@ const UserLayout = () => {
                 </div>
 
                 <div className="nav-btn">
-                    <div>
+                    <div className="btn btn--active">
                         <span>General Details</span>
                     </div>
-                    <div>
+                    <div className="btn">
                         <span>Documents</span>
                     </div>
-                    <div>
+                    <div className="btn">
                         <span>Bank Details</span>
                     </div>
-                    <div>
+                    <div className="btn">
                         <span>Loans</span>
                     </div>
-                    <div>
+                    <div className="btn">
                         <span>Savings</span>
                     </div>
-                    <div>
+                    <div className="btn">
                         <span>App and Systems</span>
                     </div>
                 </div>
-
             </div>
-            <Outlet />
+
+            {/* Integrated UserDetailsBody component */}
+            <UserDetailsBody user={staticUser} />
         </div>
     )
 }
