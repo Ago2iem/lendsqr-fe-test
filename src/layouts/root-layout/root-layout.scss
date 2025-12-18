@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.layout {
+    background-color: $bg-color-secondary;
+
+
+    .lower {
+        display: grid;
+        grid-template-columns: 100% 1fr; // sidebar + main content
+        gap: $spacing-lg;
+
+        .main-content {
+            flex-grow: 1;
+            padding: $spacing-lg;
+            min-height: calc(100vh - 100px);
+            margin-left: 20%;
+            margin-top: 100px;
+            background-color: $bg-color-secondary;
+            // border: 1px solid red;
+            // margin-top: 100px;
+        }
+    }
+}

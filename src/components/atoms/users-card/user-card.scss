@@ -1,0 +1,61 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.card {
+    background-color: #fff;
+    border: 1px solid $tetiary-color-fade-s;
+    border-radius: 5px;
+    height: 160px;
+    padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: $spacing-md;
+
+    .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--purple {
+            background-color: #DF18FF1A;
+        }
+
+        &--blue {
+            background-color: #5718FF1A;
+        }
+
+        &--orange {
+            background-color: #F55F441A;
+        }
+
+        &--red {
+            background-color: #FF33661A;
+        }
+    }
+
+    .text {
+        text-transform: uppercase;
+        color: $info-color;
+        line-height: 100%;
+        letter-spacing: 0;
+        font-weight: 500;
+        font-size: $font-size-sm;
+        white-space: nowrap;
+
+        &--number {
+            font-weight: 600;
+            font-size: $font-size-xl;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+            color: $tetiary-color;
+
+
+        }
+    }
+}

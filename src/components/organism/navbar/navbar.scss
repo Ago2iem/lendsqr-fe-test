@@ -1,0 +1,121 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.navbar {
+    display: flex;
+    position: fixed;
+    height: 100px;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(84, 95, 125, 0.05);
+    box-shadow: 0px 5px 15px 0px rgba(84, 95, 125, 0.05);
+    z-index: 999;
+
+
+    .inner-nav {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+        display: flex;
+
+        .left {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex: 1;
+
+            .search-bar {
+                width: 400px;
+                display: flex;
+                align-items: flex-end;
+
+                .search-btn {
+                    background-color: $primary-color;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    align-self: stretch;
+                    padding: 0 $spacing-md;
+                    border: none;
+                    flex-shrink: 0;
+                    border-bottom-right-radius: 5px;
+                    border-top-right-radius: 5px;
+
+                    img {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: $spacing-xl;
+            justify-content: end;
+
+
+            .docs {
+                color: $tetiary-color;
+                font-size: $font-size-base;
+                text-decoration: none;
+                cursor: pointer;
+                font-weight: 400;
+                text-decoration: underline;
+
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .img-div {
+                width: 48px;
+                height: 48px;
+                overflow: hidden;
+                border-radius: 50%;
+
+                .img {
+                    object-fit: cover;
+                }
+
+            }
+
+            .user {
+                display: flex;
+                align-items: center;
+                gap: $spacing-md;
+
+
+                .text {
+                    color: $info-color;
+                    font-size: $font-size-base;
+                    font-weight: 500;
+                    line-height: 100%;
+                    letter-spacing: 0px;
+                }
+
+                .arrow {
+                    padding: $spacing-md;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .use {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+
+
+        }
+    }
+
+}
