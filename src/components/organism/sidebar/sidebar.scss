@@ -1,12 +1,11 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.sidebar {
+.sidebar-container {
     height: 100vh;
-    // min-width: 283px;
     width: 20%;
-    // border: 1px solid red;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scroll-behavior: smooth;
     position: fixed;
     top: 100px;
     padding-top: $spacing-xl;
@@ -14,32 +13,72 @@
     -webkit-box-shadow: 2px 0px 15px 0px rgba(84, 95, 125, 0.03);
     box-shadow: 2px 0px 15px 0px rgba(84, 95, 125, 0.03);
     z-index: 999;
+    background-color: $bg-color;
+    scrollbar-width: thin;
+    padding-bottom: $spacing-tl;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
-    .top {
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-xl;
-        margin-bottom: $spacing-md;
-    }
 
-    .sidebar-costumer {
-        margin-bottom: $spacing-xl;
-        display: flex;
-        flex-direction: column;
-        // gap: $spacing-sm;
+    @include tablet {
+        position: fixed;
+        width: 262px;
+        left: -270px;
+        z-index: 1030;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
 
-        .sidebar-costumer-title {
-            padding: $spacing-smd $spacing-lg;
-            font-size: $font-size-xs;
-            font-weight: 500;
-            letter-spacing: 0%;
-            line-height: 100%;
-            color: $info-color;
-
+        &.nav-active {
+            left: 0;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
         }
+    }
+
+    .sidebar {
+        width: 100%;
+
+        .top {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-xl;
+            margin-bottom: $spacing-md;
+        }
+
+        .sidebar-costumer {
+            margin-bottom: $spacing-xl;
+            display: flex;
+            flex-direction: column;
+            // gap: $spacing-sm;
+
+            .sidebar-costumer-title {
+                padding: $spacing-smd $spacing-lg;
+                font-size: $font-size-xs;
+                font-weight: 500;
+                letter-spacing: 0%;
+                line-height: 100%;
+                color: $info-color;
+
+            }
+        }
+
+        .logout {
+            border-top: 1px solid #21407d5a;
+            padding: 10px 30px;
+            cursor: pointer;
+            color: $tetiary-color;
+            font-size: 16px;
+
+            div {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .version {
+                font-size: 12px;
+            }
+        }
+
     }
 }

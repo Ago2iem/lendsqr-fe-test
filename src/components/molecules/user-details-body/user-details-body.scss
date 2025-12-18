@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+
+.user-details-main {
+    background-color: #ffffff;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 30px;
+    margin-top: 30px;
+
+    .user-info-card {
+        border-bottom: 1px solid #21407d5a;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+
+        h2 {
+            color: $tetiary-color;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .user-info-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+
+
+            div {
+                margin-right: 2%;
+                min-width: 150px;
+            }
+        }
+
+        p {
+            color: $info-color;
+
+            &:first-child {
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-bottom: 8px;
+                font-weight: 400;
+            }
+
+            &:last-child {
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+}

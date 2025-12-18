@@ -12,6 +12,12 @@
     }
 }
 
+@mixin tablet {
+    @media (max-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
 // Card with shadow
 @mixin card {
     background: white;
