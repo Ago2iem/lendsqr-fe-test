@@ -39,6 +39,10 @@
                 display: flex;
                 align-items: flex-end;
 
+                @include mobile {
+                    display: none;
+                }
+
                 .search-btn {
                     background-color: $primary-color;
                     cursor: pointer;

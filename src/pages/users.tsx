@@ -25,20 +25,22 @@ const UserLayout = () => {
     }
     return (
         <div className="user-layout">
-            <div onClick={() => navigate('/dashboard')} className="back">
-                <img src={Arrow} alt="" />
-                <span className="back-text">Back to users</span>
-            </div>
+            <div className="top" >
+                <div onClick={() => navigate('/dashboard')} className="back">
+                    <img src={Arrow} alt="" />
+                    <span className="back-text">Back to users</span>
+                </div>
 
-            <div className="btn-section">
-                <span className="user-text">User Details</span>
-                <div className="btn">
-                    <Button variant="outline-red">
-                        BLACKLIST USER
-                    </Button>
-                    <Button variant="outline-primary">
-                        ACTIVATE USER
-                    </Button>
+                <div className="btn-section">
+                    <span className="user-text">User Details</span>
+                    <div className="btn">
+                        <Button variant="outline-red">
+                            BLACKLIST USER
+                        </Button>
+                        <Button variant="outline-primary">
+                            ACTIVATE USER
+                        </Button>
+                    </div>
                 </div>
             </div>
 

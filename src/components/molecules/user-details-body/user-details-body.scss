@@ -30,15 +30,20 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
 
-
             div {
                 margin-right: 2%;
                 min-width: 150px;
+                max-width: 100%;
+                overflow: hidden;
             }
         }
 
         p {
             color: $info-color;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
 
             &:first-child {
                 text-transform: uppercase;

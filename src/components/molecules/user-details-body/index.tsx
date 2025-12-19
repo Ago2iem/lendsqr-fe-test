@@ -1,6 +1,6 @@
 import React from 'react';
 import './user-details-body.scss'
-import { DummyUser, User } from '../../../types/users';
+import { User } from '../../../types/users';
 
 interface Props {
     user: User;

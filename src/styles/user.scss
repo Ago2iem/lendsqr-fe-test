@@ -9,7 +9,6 @@
 
 .user-layout {
     height: 100%;
-    // overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: $spacing-lg;
@@ -17,6 +16,45 @@
 
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-lg;
+
+        .btn-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+
+            @include mobile {
+                flex-direction: column;
+                align-items: start;
+                gap: $spacing-md;
+                justify-content: start;
+            }
+
+            .user-text {
+                font-weight: 500;
+                font-size: $font-size-xl;
+                line-height: 100%;
+                letter-spacing: 0px;
+                color: $tetiary-color;
+
+            }
+
+            .btn {
+                display: flex;
+                gap: $spacing-sm;
+
+                @include mobile {
+                    width: 100%;
+                }
+            }
+        }
+
     }
 
     .back {
@@ -35,25 +73,6 @@
 
     }
 
-    .btn-section {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .user-text {
-            font-weight: 500;
-            font-size: $font-size-xl;
-            line-height: 100%;
-            letter-spacing: 0px;
-            color: $tetiary-color;
-
-        }
-
-        .btn {
-            display: flex;
-            gap: $spacing-sm;
-        }
-    }
 
     .nav {
         width: 100%;
