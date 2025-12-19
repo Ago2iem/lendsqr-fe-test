@@ -25,15 +25,16 @@ function App() {
 
       <div className="container">
 
-
         <div className='left'>
           <div className='logo'><img src={Logo} alt="" /></div>
-          <div className=''>
-            <img src={LoginImage} alt="" />
+          <div className='img-container'>
+            <img src={LoginImage} alt="" className='img' />
           </div>
         </div>
 
         <div className='right'>
+          <div className='logo-right'><img src={Logo} alt="" /></div>
+
           <div className='welcome'>
             <h2 className='text' >Welcome!</h2>
             <p className='text text--sub'>Enter details to login.</p>
