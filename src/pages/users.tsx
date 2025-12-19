@@ -6,11 +6,23 @@ import Person from '../assets/icons/person.svg'
 import { Button } from "../components/atoms/button/Button"
 import UserDetailsBody from "../components/molecules/user-details-body"
 import { staticUser } from "../common/users"
+import { useGetUserById } from "../api/queries/useUsers"
+import { FadeLoader } from "react-spinners"
 
 const UserLayout = () => {
     const navigate = useNavigate()
+    const { data, isError, isLoading, error } = useGetUserById()
 
 
+    if (isError) {
+        return <div className="user-layout">Error loading user: {error.message}</div>;
+    }
+
+    if (isLoading) {
+        return <div className="spinner">
+            <FadeLoader color='#213F7D' />
+        </div>
+    }
     return (
         <div className="user-layout">
             <div onClick={() => navigate('/dashboard')} className="back">
@@ -37,8 +49,8 @@ const UserLayout = () => {
                     </div>
                     <div className="user-left">
                         <div className="group group--first">
-                            <span className="name">Grace Effiom</span>
-                            <span className="name name--id">LSQFf587g90</span>
+                            <span className="name">{data?.fullName}</span>
+                            <span className="name name--id">{data?.id}</span>
                         </div>
                         <div className="group group--border">
                             <span className="name name--user">User's Tier</span>
@@ -77,8 +89,7 @@ const UserLayout = () => {
                 </div>
             </div>
 
-            {/* Integrated UserDetailsBody component */}
-            <UserDetailsBody user={staticUser} />
+            {data && <UserDetailsBody user={data} />}
         </div>
     )
 }

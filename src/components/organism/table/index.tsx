@@ -1,20 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import Filter from "../../molecules/filter-indicator";
 import Options from "../../molecules/options-modal";
-import OptionsBtn from '../../../assets/icons/dots-btn.svg'
-import FilterBtn from '../../../assets/icons/filter-btn.svg'
+import OptionsBtn from '../../../assets/icons/dots-btn.svg';
+import FilterBtn from '../../../assets/icons/filter-btn.svg';
 import './table.scss';
+import { User } from '../../../types/users';
 
-interface User {
-    id: string;
-    organization: string;
-    username: string;
-    email: string;
-    phoneNumber: string;
-    createdAt: string;
-    status: string;
-}
 
 interface Props {
     users: User[];
@@ -23,13 +16,33 @@ interface Props {
 
 const tableHeaders = ['Organization', 'Username', 'Email', 'Phone number', 'Date joined', 'Status', ''];
 
-const UsersTable: React.FC<Props> = ({ users, loading = false }) => {
+const UsersTable: React.FC<Props> = ({
+    users,
+    loading = false,
+}) => {
     const [isFilterOpen, setIsFilterOpen] = useState<null | number>(null);
     const [isOptionsOpen, setIsOptionsOpen] = useState<null | string>(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+    const options = useMemo(() => [10, 20, 30, 50], []);
 
-    const validUsers = useMemo(() => users, [users]);
+    console.log('users fron inside table', users)
 
-    if (loading) {
+    const pageCount = Math.ceil(users?.length / itemsPerPage);
+    const offset = currentPage * itemsPerPage;
+    const currentPageUsers = users?.slice(offset, offset + itemsPerPage);
+
+    const handlePageClick = (event: { selected: number }) => {
+        setCurrentPage(event.selected);
+    };
+
+    const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = parseInt(e.target.value, 10);
+        setItemsPerPage(value);
+        setCurrentPage(0);
+    };
+
+    if (loading && users?.length === 0) {
         return <div className="users-table-loading">Loading users...</div>;
     }
 
@@ -57,7 +70,7 @@ const UsersTable: React.FC<Props> = ({ users, loading = false }) => {
                 </thead>
 
                 <tbody>
-                    {validUsers.map((user: User) => (
+                    {currentPageUsers?.map((user: User) => (
                         <tr key={user.id}>
                             <td>
                                 <Link to={`/dashboard/users/${user.id}`}>{user.organization}</Link>
@@ -65,7 +78,11 @@ const UsersTable: React.FC<Props> = ({ users, loading = false }) => {
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>{user.phoneNumber}</td>
-                            <td>{user.createdAt}</td>
+                            <td>{new Date(user.createdAt).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                            })}</td>
                             <td>
                                 <span className={`status-${user.status.toLowerCase()}`}>{user.status}</span>
                             </td>
@@ -75,12 +92,59 @@ const UsersTable: React.FC<Props> = ({ users, loading = false }) => {
                                     alt="more"
                                     onClick={() => (isOptionsOpen === user.id ? setIsOptionsOpen(null) : setIsOptionsOpen(user.id))}
                                 />
-                                {isOptionsOpen === user.id && <Options />}
+                                {isOptionsOpen === user.id && <Options id={user.id} />}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+            {users?.length > 0 && (
+                <div className="pagination-container">
+                    <div className="page-info">
+                        <p>
+                            Showing{' '}
+                            <span>
+                                <select
+                                    value={itemsPerPage}
+                                    onChange={handleItemsPerPageChange}
+                                    className="page-select"
+                                >
+                                    {options.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </select>
+                            </span>
+                            {' '}out of {users.length}
+                        </p>
+                    </div>
+
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel=">"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={2}
+                        pageCount={pageCount}
+                        previousLabel="<"
+                        renderOnZeroPageCount={null}
+                        containerClassName="pagination"
+                        activeClassName="active"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item-btn"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item-btn"
+                        nextLinkClassName="page-link"
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                        disabledClassName="disabled"
+                        forcePage={currentPage}
+                    />
+                </div>
+            )}
         </div>
     );
 };

@@ -1,6 +1,13 @@
 @import '../styles/variables';
 @import '../styles/mixins';
 
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .dashboard {
     flex: 1;
     height: 100%;
@@ -9,9 +16,9 @@
     gap: $spacing-xl;
     // overflow-y: auto;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
 
     .text-dashboard {
         font-weight: 500;

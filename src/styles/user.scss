@@ -1,13 +1,19 @@
 @import '../styles/variables';
 @import '../styles/mixins';
 
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .user-layout {
     height: 100%;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: $spacing-lg;
+    scrollbar-width: thin;
 
     &::-webkit-scrollbar {
         display: none;

@@ -5,10 +5,20 @@ import './styles/app.scss'
 import LoginImage from './assets/images/pablo-sign.png'
 import Input from './components/atoms/input/Input'
 import { useNavigate } from 'react-router-dom'
+import { MoonLoader } from 'react-spinners'
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(false)
 
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      navigate('/dashboard')
+    }, 3000);
+  }
 
   return (
     <div className="app">
@@ -35,8 +45,8 @@ function App() {
 
             <div className='forgot-password'>FORGOT PASSWORD?</div>
 
-            <Button variant="primary" onClick={() => navigate('/dashboard')} >
-              LOG IN
+            <Button variant="primary" onClick={() => handleLogin()} >
+              {loading ? <MoonLoader size={15} color='#fff' /> : 'LOG IN'}
             </Button>
           </div>
         </div>
