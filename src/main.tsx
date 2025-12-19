@@ -6,6 +6,10 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Dashboard from './pages/dashboard'
 import RootLayout from './layouts/root-layout'
 import User from './pages/users'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 6000, gcTime: 10 * (60 * 1000) } } })
+
 
 const router = createBrowserRouter([
   {
@@ -20,7 +24,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/user-details',
+    path: '/user-details/:id',
     element: <RootLayout />,
     children: [
       { path: '', element: <User /> }
@@ -30,6 +34,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 )

@@ -6,13 +6,6 @@ import Coins from '../assets/icons/coins.svg'
 
 export const cardContent: CardType[] = [
     {
-        text: 'Users',
-        icon: User,
-        number: '2,300',
-        variant: 'purple'
-
-    },
-    {
         text: 'Active users',
         icon: Group,
         number: '2,300',

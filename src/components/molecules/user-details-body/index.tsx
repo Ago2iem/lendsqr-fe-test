@@ -1,32 +1,6 @@
 import React from 'react';
 import './user-details-body.scss'
-
-interface User {
-    fullName: string;
-    phoneNumber: string;
-    email: string;
-    bvn: string;
-    gender: string;
-    educationAndEmployment: {
-        levelOfEducation: string;
-        employmentStatus: string;
-        sectorOfEmployment: string;
-        durationOfEmployment: string;
-        officeEmail: string;
-        monthlyIncome: string;
-        loanRepayment: string;
-    };
-    socials: {
-        twitter: string;
-        facebook: string;
-        instagram: string;
-    };
-    guarantor: {
-        fullName: string;
-        phoneNumber: string;
-        address: string;
-    };
-}
+import { DummyUser, User } from '../../../types/users';
 
 interface Props {
     user: User;

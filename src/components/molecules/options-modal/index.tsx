@@ -5,12 +5,16 @@ import Eye from '../../../assets/icons/eye.svg'
 import PersonCheck from '../../../assets/icons/person-check.svg'
 import PersonX from '../../../assets/icons/person-x.svg'
 
-const OptionsModal = () => {
+interface OptionsOprops {
+    id: string
+}
+
+const OptionsModal = ({ id }: OptionsOprops) => {
     return (
         <div className={"options-dropdown"}>
             <ul>
                 <li>
-                    <Link to={`/user-details`}>
+                    <Link to={`/user-details/${id}`}>
                         <img src={Eye} alt="eye icon" /> <span>View Details</span>
                     </Link>
                 </li>
